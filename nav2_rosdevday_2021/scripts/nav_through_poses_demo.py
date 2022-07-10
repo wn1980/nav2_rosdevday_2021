@@ -60,10 +60,10 @@ def main():
     goal_pose1 = PoseStamped()
     goal_pose1.header.frame_id = 'map'
     goal_pose1.header.stamp = navigator.get_clock().now().to_msg()
-    goal_pose1.pose.position.x = 1.5
-    goal_pose1.pose.position.y = 0.55
-    goal_pose1.pose.orientation.w = 0.707
-    goal_pose1.pose.orientation.z = 0.707
+    goal_pose1.pose.position.x = -2
+    goal_pose1.pose.position.y = 2
+    goal_pose1.pose.orientation.w = 0
+    goal_pose1.pose.orientation.z = 1
     goal_poses.append(goal_pose1)
 
     # additional goals can be appended
