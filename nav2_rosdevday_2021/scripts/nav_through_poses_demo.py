@@ -23,6 +23,9 @@ from robot_navigator import BasicNavigator, NavigationResult
 
 '''
 Basic navigation demo to go to poses.
+
+$ ros2 run tf2_ros tf2_echo base_footprint map
+
 '''
 def main():
     rclpy.init()
@@ -33,8 +36,8 @@ def main():
     initial_pose = PoseStamped()
     initial_pose.header.frame_id = 'map'
     initial_pose.header.stamp = navigator.get_clock().now().to_msg()
-    initial_pose.pose.position.x = -2
-    initial_pose.pose.position.y = 2
+    initial_pose.pose.position.x = -2.0
+    initial_pose.pose.position.y = 2.0
     initial_pose.pose.orientation.z = 1.0
     initial_pose.pose.orientation.w = 0.0
     navigator.setInitialPose(initial_pose)
@@ -60,18 +63,18 @@ def main():
     goal_pose1 = PoseStamped()
     goal_pose1.header.frame_id = 'map'
     goal_pose1.header.stamp = navigator.get_clock().now().to_msg()
-    goal_pose1.pose.position.x = 0.25
-    goal_pose1.pose.position.y = 0.5
-    goal_pose1.pose.orientation.w = 0
-    goal_pose1.pose.orientation.z = 1
+    goal_pose1.pose.position.x = -0.5
+    goal_pose1.pose.position.y = 1.5
+    goal_pose1.pose.orientation.w = 1.0
+    goal_pose1.pose.orientation.z = 0.0
     goal_poses.append(goal_pose1)
 
     # additional goals can be appended
     goal_pose2 = PoseStamped()
     goal_pose2.header.frame_id = 'map'
     goal_pose2.header.stamp = navigator.get_clock().now().to_msg()
-    goal_pose2.pose.position.x = -2
-    goal_pose2.pose.position.y = -2
+    goal_pose2.pose.position.x = 0.0
+    goal_pose2.pose.position.y = 0.0
     goal_pose2.pose.orientation.w = 0.707
     goal_pose2.pose.orientation.z = 0.707
     goal_poses.append(goal_pose2)
@@ -79,11 +82,29 @@ def main():
     goal_pose3 = PoseStamped()
     goal_pose3.header.frame_id = 'map'
     goal_pose3.header.stamp = navigator.get_clock().now().to_msg()
-    goal_pose3.pose.position.x = 0
-    goal_pose3.pose.position.y = -1
-    goal_pose3.pose.orientation.w = 0.707
-    goal_pose3.pose.orientation.z = 0.707
+    goal_pose3.pose.position.x = -2.0
+    goal_pose3.pose.position.y = -2.0
+    goal_pose3.pose.orientation.w = 1.0
+    goal_pose3.pose.orientation.z = 0.0
     goal_poses.append(goal_pose3)
+
+    goal_pose4 = PoseStamped()
+    goal_pose4.header.frame_id = 'map'
+    goal_pose4.header.stamp = navigator.get_clock().now().to_msg()
+    goal_pose4.pose.position.x = 0.0
+    goal_pose4.pose.position.y = 0.0
+    goal_pose4.pose.orientation.w = 0.707
+    goal_pose4.pose.orientation.z = 0.707
+    goal_poses.append(goal_pose4)
+
+    goal_pose5 = PoseStamped()
+    goal_pose5.header.frame_id = 'map'
+    goal_pose5.header.stamp = navigator.get_clock().now().to_msg()
+    goal_pose5.pose.position.x = -2.0
+    goal_pose5.pose.position.y = 2.0
+    goal_pose5.pose.orientation.w = 1.0
+    goal_pose5.pose.orientation.z = 0.0
+    #goal_poses.append(goal_pose5)
 
     # sanity check a valid path exists
     # path = navigator.getPathThroughPoses(initial_pose, goal_poses)
@@ -115,8 +136,8 @@ def main():
                 goal_pose4 = PoseStamped()
                 goal_pose4.header.frame_id = 'map'
                 goal_pose4.header.stamp = navigator.get_clock().now().to_msg()
-                goal_pose4.pose.position.x = -5.0
-                goal_pose4.pose.position.y = -4.75
+                goal_pose4.pose.position.x = 0.0
+                goal_pose4.pose.position.y = 0.0
                 goal_pose4.pose.orientation.w = 0.707
                 goal_pose4.pose.orientation.z = 0.707
                 navigator.goThroughPoses([goal_pose4])
